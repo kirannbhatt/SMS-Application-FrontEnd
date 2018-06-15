@@ -1,6 +1,6 @@
 # raven_front
 
-> A Vue.js project
+> A Vue.js project for SMS Application
 
 ## Build Setup
 
