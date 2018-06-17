@@ -23,7 +23,6 @@
                                         type="text"></v-text-field>
                                     <v-text-field 
                                         id="email"
-                                        v-validate="'required|email'"
                                         label="Email"
                                         v-model="formData.email"
                                         type="text"></v-text-field>
@@ -43,7 +42,6 @@
                                         v-model="formData.organization"
                                         type="text"></v-text-field>
                                     <v-select
-                                        v-validate="'required'"
                                         :items="type"
                                         v-model="formData.type"
                                         data-vv-name="select"
@@ -94,8 +92,8 @@ export default {
         .catch(this.onError.bind(this));
     },
     onSuccess(response) {
-      console.log(response.data);
-    },
+        this.$router.push('/login')
+}   ,
     onError(error) {
       console.log(error);
     }
