@@ -48,33 +48,27 @@ export default {
   data() {
     return {
       formData: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        contact: '',
-        password: '',
-        organization: '',
-        type: null
-      },
-      type: [
-        { text: 'Select One', value: null },
-          'admin', 'user'
-      ],
-      show: true
+        username: '',
+        password: ''
+      }
     }
   },
-
   methods: {
     onSubmit() {
       axios.post('http://localhost:3005/auth/login', this.formData)
-                .then(this.onSuccess.bind(this))
-                .catch(this.onError.bind(this))
+                .then((response) => {
+                  this.onSuccess(response)
+                })
+                .catch((error) => {
+                  this.onError(error)
+                })
     },
     onSuccess(response) {
-      console.log(response.data)
+      Auth.authenticateUser(response.data.token)
+      this.$router.push('/dashboard')
     },
     onError(error) {
-      console.log(error);
+      this.$toaster.error(error.response.data.message)      
     }
   }
 }
