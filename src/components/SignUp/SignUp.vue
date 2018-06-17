@@ -93,9 +93,10 @@ export default {
     },
     onSuccess(response) {
         this.$router.push('/login')
+        this.$toaster.success(response.data.message)
 }   ,
     onError(error) {
-      console.log(error);
+      this.$toaster.error(error.response.data.message)
     }
   }
 };
