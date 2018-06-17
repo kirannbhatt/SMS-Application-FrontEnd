@@ -53,6 +53,11 @@ export default {
       }
     }
   },
+  mounted () {
+    if(this.$router.currentRoute.query.ua) {
+      this.$toaster.info("Please login first :) ")
+    }
+  },
   methods: {
     onSubmit() {
       axios.post('http://localhost:3005/auth/login', this.formData)
