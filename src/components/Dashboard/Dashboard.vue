@@ -20,7 +20,7 @@
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{titlee}}</v-toolbar-title>
+      <v-toolbar-title>{{$route.name}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -42,7 +42,6 @@ import Sidebar from './Sidebar'
 export default {
   data: () => ({
     drawer: true,
-    titlee: window.location.pathname.substring(11).toUpperCase()
   }),
   props: {
     source: String
