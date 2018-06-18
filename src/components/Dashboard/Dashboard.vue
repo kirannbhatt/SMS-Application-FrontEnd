@@ -6,7 +6,8 @@
       fixed
       app
     >
-      <v-list dense>
+      <side-bar></side-bar>
+      <!-- <v-list dense>
         <v-list-tile v-for="item in items" :key="item.title" @click="hello()">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -15,16 +16,17 @@
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-      </v-list>
+      </v-list> -->
     </v-navigation-drawer>
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{titlee}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink>
+            <router-view />
           </v-flex>
         </v-layout>
       </v-container>
@@ -35,16 +37,18 @@
   </v-app>
 </template>
 <script>
+import Sidebar from './Sidebar'
+
 export default {
   data: () => ({
     drawer: true,
-    items: [
-      {title: 'Home', icon: 'dashboard'},
-      {title: 'About', icon: 'question_answer'}
-    ]
+    titlee: window.location.pathname.substring(11).toUpperCase()
   }),
   props: {
     source: String
+  },
+  components: {
+    'side-bar': Sidebar
   }
 }
 </script>
